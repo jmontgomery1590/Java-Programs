@@ -72,7 +72,7 @@ public class CSVModifier { //Imports CSV file, assigns values to CSVInfo class o
 	
 	private static void CSVWriter(CSVInfo user, List<CSVInfo> userList) { //Writes filtered and sorted data into individual CSV files.
 		try {
-			FileWriter csvWriter = new FileWriter(filePath + user.getInsCompany() + ".csv"); //Input custom file path here.
+			FileWriter csvWriter = new FileWriter(newFilePath + user.getInsCompany() + ".csv"); //Input new custom file path here.
 			for (CSVInfo userData : userList) {
 				csvWriter.write(userData.toString() + "\n");
 			}
