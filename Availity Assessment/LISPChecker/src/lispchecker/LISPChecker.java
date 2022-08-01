@@ -1,5 +1,6 @@
 package lispchecker;
 
+import java.util.EmptyStackException;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -14,7 +15,7 @@ public class LISPChecker {
 		return lispCode;
 	}
 	
-	public static boolean codeNested(String lispCode) { //Inputs provided String into Stack, iterating through each character in String.
+	public static boolean codeNested(String lispCode) throws EmptyStackException { //Inputs provided String into Stack, iterating through each character in String.
 		
 		Stack<Character> codeStack = new Stack<Character>(); //Stack inputs data in a LIFO framework for proper variable checking.
 		for(int i = 0; i < lispCode.length(); i++) {
@@ -23,21 +24,20 @@ public class LISPChecker {
 			if (lispChar == '{' || lispChar == '[' || lispChar == '(') {
 				codeStack.push(lispChar);
 				continue;
-			}
-			
-			if(codeStack.isEmpty()) {
-				return false;
-			
-			} else if (lispChar == '}' && codeStack.peek() == '{' || //Cycles through String again. If closing bracket, brace, or parentheses is found,
-					lispChar == ']' && codeStack.peek() == '[' ||	 //searches Stack for opening equivalent. If found, removes opening from Stack.
-					lispChar == ')' && codeStack.peek() == '(' ) {
+				
+			} try {
+				if (lispChar == '}' && codeStack.peek() == '{' || 	//Cycles through String again. If closing bracket, brace, or parentheses is found,
+					lispChar == ']' && codeStack.peek() == '[' ||	//searches Stack for opening equivalent. If found, removes opening from Stack.
+					lispChar == ')' && codeStack.peek() == '(') {
 				codeStack.pop();
+				continue;
+				} 
+			}catch (EmptyStackException ese) { //Returns false if closing bracket, brace, or parentheses are left in String with no opening left in Stack.
+				return false;
 			}
 		}
-		
 		return (codeStack.isEmpty()); //If all opening and closing parentheses, braces, and brackets have been removed from the Stack, with none left over, returns true.
 	}
-	
 	
 	public static void repeatCheck() { //Method that asks user, after program runs to completion, if they would like to run checker again.
 		System.out.println("\nWould you like to check another LISP string? Yes or No:");
@@ -62,5 +62,4 @@ public class LISPChecker {
 		}
 		repeatCheck();
 	}
-
 }
