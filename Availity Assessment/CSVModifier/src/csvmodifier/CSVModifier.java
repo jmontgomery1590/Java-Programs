@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class CSVModifier { //Imports CSV file, assigns values to CSVInfo class object, then instantiates those values to CSVInfo indexes.
 	
-	public static String csvImport = "C:\\Users\\jmont\\eclipse-workspace\\CSVModifier\\src\\CSV Files\\CSVEnrollees.csv"; //Input custom file path here
+	public static String csvImport = FILEPATH; //Input custom file path here
 		
 	public static void main(String[] args) {
 		BufferedReader csvReader = null;
@@ -74,7 +74,7 @@ public class CSVModifier { //Imports CSV file, assigns values to CSVInfo class o
 	
 	private static void CSVWriter(CSVInfo user, List<CSVInfo> userList) { //Writes filtered and sorted data into individual CSV files.
 		try {
-			FileWriter csvWriter = new FileWriter("C:\\Users\\jmont\\eclipse-workspace\\CSVModifier\\src\\CSV Files\\" + user.getInsCompany() + ".csv"); //Input custom file path here.
+			FileWriter csvWriter = new FileWriter(NEWFILEPATH + user.getInsCompany() + ".csv"); //Input custom file path here.
 			for (CSVInfo userData : userList) {
 				csvWriter.write(userData.toString() + "\n");
 			}
