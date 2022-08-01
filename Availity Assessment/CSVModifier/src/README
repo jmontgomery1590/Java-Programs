@@ -1,0 +1,4 @@
+Within this program, there will be two locations that placeholders are used. These are towards the beginning for file import,
+using "FILEPATH" (on line 18) and towards the end, using "NEWFILEPATH" in the CSVWriter method (line 77). These are to be
+replaced with the file path of whichever CSV file the user wants to use on their machine. I have provided a sample CSV file
+that uses the appropriate format, located in the CSV Files folder within this project.
