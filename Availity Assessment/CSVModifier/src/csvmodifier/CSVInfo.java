@@ -59,8 +59,4 @@ public class CSVInfo implements Comparable<CSVInfo> { //Sets up Class to take in
 	public String toString() { //Combines all variables into a single String.
 		return userID + "," + firstName + "," + lastName + "," + version + "," + insCompany;
 	}
-	
-	public int compareTo(CSVInfo info) { //Compares last names to sort by when writing info to new files.
-		return this.getLastName().compareTo(info.getLastName());
-	}
 }
