@@ -1,0 +1,9 @@
+1.	The first class that would benefit from a different Collection type is Credentials/CredentialsList, preferably LinkedHashSet.
+	a.	While a user can have multiple accounts, each user’s credentials need to be unique. By preventing duplicate credentials,
+		it will ensure that users have unique login information, preventing multiple users having the same login credentials.
+	
+2.	The second class that would benefit would be the Order class, where the use of the standard HashSet type would be most beneficial.
+	a.	This will ensure that orders in the list will not be duplicated, but order is not important as my program allows me to search through
+		my elements for specific information, allowing me to find specifically what it is the user is looking for regardless of how it is sorted.
+		While this will result in the test list of orders being in a random order, it will replicate real life as not all systems universally
+		sort their data by default and sometimes the need to manually sort or search through files is required.
